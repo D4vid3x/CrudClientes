@@ -153,19 +153,19 @@ function editNombre(clientes){
 }
 
 function editApellidos(clientes){
-    let apellidoNuevo=prompt("Introduce un nuevo nombre: ");
+    let apellidoNuevo=prompt("Introduce unos nuevos apellidos: ");
     clientes.apellidos=apellidoNuevo;
     return clientes;
 }
 
 function editdni(clientes){
-    let dniNuevo=prompt("Introduce un nuevo nombre: ");
+    let dniNuevo=prompt("Introduce un nuevo dni: ");
     clientes.dni=dniNuevo;
     return clientes;
 }
 
 function editEdad(clientes){
-    let edadNuevo=prompt("Introduce un nuevo nombre: ");
+    let edadNuevo=prompt("Introduce un nuevo edad: ");
     clientes.edad=edadNuevo;
     return clientes;
 }
