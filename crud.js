@@ -136,5 +136,5 @@ function borrarCliente(){
     }else{
         alert("No se ha borrado el cliente");
     }
-    
+
 }
