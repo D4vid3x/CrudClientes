@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="crud.js"></script>
+        <link rel="stylesheet" href="crud.css">
+    </head>
+    <body>
+        <div id="contenedor">
+            <div id="datosUsuario">
+                <h1>Datos del usuario</h1>
+                <p>Nombre:
+                    <input id="nombre" type="text" pattern=""></p>
+    
+                <p>Apellidos:
+                    <input id="apellidos" type="text" pattern=""></p>
+    
+                <p>DNI:
+                    <input id="dni" type="text" pattern=""></p>
+    
+                <p>Edad:
+                    <input id="edad" type="text" pattern=""></p>
+                <br>
+                <button onclick="crearCliente()">Crear Cliente</button> 
+                <button onclick="borrarDatosIntro()">Borrar datos Introducidos</button>
+                <br>
+            </div>
+            <div id="botones">
+                <br>
+                <button onclick="mostrartodosClientes()">Mostrar clientes</button>
+                <button onclick="limpiarTabla()">Limpiar Tabla</button>
+                <button >Modificar Clientes</button>
+            </div>
+            <div id="contenedorTabla">
+                <h2>Listado de clientes</h2>
+                <table id="tabla"></table>
+            </div>
+        </div>
+        
+    </body>
+</html>
