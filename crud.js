@@ -76,11 +76,11 @@ function crearCliente() {
         dni: dni,
         edad: edad
     };
+
     if(nombre === "" || apellidos ==="" || dni==="" || edad===""){
         alert("Rellena los campos");
     }else{
-
-    arrayClientes.push(clientes);
+        arrayClientes.push(clientes);
     }
 
 }
@@ -121,4 +121,10 @@ function limpiarTabla() {
     let tabla = document.getElementById("tabla");
 
     tabla.innerHTML = "";
+}
+
+function borrarCliente(){
+    let select=prompt("Indica el dni del usuario que quieres borrar: ");
+
+    
 }
