@@ -1,60 +1,59 @@
 let arrayClientes = [
 
     {
-        "name": "Leanne Graham",
-        "username": "Bret",
+        "nombre": "Leanne Graham",
+        "apellidos": "Bret",
         "dni": "11111",
         "edad": 18
     }, {
-        "name": "Ervin Howell",
-        "username": "Antonette",
+        "nombre": "Ervin Howell",
+        "apellidos": "Antonette",
         "dni": "22222",
         "edad": 20
     }, {
-        "name": "Clementine Bauch",
-        "username": "Samantha",
+        "nombre": "Clementine Bauch",
+        "apellidos": "Samantha",
         "dni": "33333",
         "edad": 17
     }, {
-        "name": "Patricia Lebsack",
-        "username": "Karianne",
+        "nombre": "Patricia Lebsack",
+        "apellidos": "Karianne",
         "dni": "44444",
         "edad": 23
 
     }, {
-        "name": "Chelsey Dietrich",
-        "username": "Kamren",
+        "nombre": "Chelsey Dietrich",
+        "apellidos": "Kamren",
         "dni": "55555",
         "edad": 16
     }, {
-        "name": "Mrs. Dennis Schulist",
-        "username": "Leopoldo_Corkery",
+        "nombre": "Mrs. Dennis Schulist",
+        "apellidos": "Leopoldo_Corkery",
         "dni": "66666",
         "edad": 18
     }, {
-        "name": "Kurtis Weissnat",
-        "username": "Elwyn.Skiles",
+        "nombre": "Kurtis Weissnat",
+        "apellidos": "Elwyn.Skiles",
         "dni": "88888",
         "edad": 45
     }, {
-        "name": "Nicholas Runolfsdottir V",
-        "username": "Maxime_Nienow",
+        "nombre": "Nicholas Runolfsdottir V",
+        "apellidos": "Maxime_Nienow",
         "dni": "88888",
         "edad": 34
     }, {
-        "name": "Glenna Reichert",
-        "username": "Delphine",
+        "nombre": "Glenna Reichert",
+        "apellidos": "Delphine",
         "dni": "99999",
         "edad": 14
     }, {
-        "name": "Clementina DuBuque",
-        "username": "",
+        "nombre": "Clementina DuBuque",
+        "apellidos": "",
         "dni": "10001",
         "edad": 57
     }
 
 ];
-let arrayClientesCopia = [];
 
 function crearCliente() {
     let nombre = document
@@ -82,7 +81,6 @@ function crearCliente() {
     }else{
         arrayClientes.push(clientes);
     }
-
 }
 
 function borrarDatosIntro() {
@@ -123,18 +121,84 @@ function limpiarTabla() {
     tabla.innerHTML = "";
 }
 
+function encontrarClienteDNI(){
+    let busca=prompt("Escribe el dni del cliente: ");
+    let encuentra=arrayClientes.findIndex(cliente=> cliente.dni===busca);
+
+    if(encuentra !==-1){
+        return arrayClientes[encuentra];
+    }else{
+        alert(`No se ha encontrado al cliente con dni ${busca}`);
+    }
+}
+
 function borrarCliente(){
-    let select=prompt("Indica el dni del cliente que quieres borrar: ");
-    if(confirm(`Quieres borrar el cliente con dni: ${select}?`)){
-        let encuentra=arrayClientes.findIndex(cliente=> cliente.dni===select);
-        if(encuentra !==-1){
-            arrayClientes.splice(encuentra, 1);
-            alert(`Cliente con dni ${select} borrado`);
+   if(confirm("¿Desea borrar un cliente?")){
+    let encontrado=encontrarClienteDNI();
+    if(encontrado!==-1){
+        arrayClientes.splice(encontrado, 1);
+        alert("Cliente borrado");
+        mostrartodosClientes();
+    }else{
+        alert("Cliente no encontrado");
+    }
+   }else{
+    alert("No se ha borrado ningún cliente");
+   }
+}
+function editNombre(clientes){
+        let nombreNuevo=prompt("Introduce un nuevo nombre: ");
+        clientes.nombre=nombreNuevo;
+        return clientes;
+}
+
+function editApellidos(clientes){
+    let apellidoNuevo=prompt("Introduce un nuevo nombre: ");
+    clientes.apellidos=apellidoNuevo;
+    return clientes;
+}
+
+function editdni(clientes){
+    let dniNuevo=prompt("Introduce un nuevo nombre: ");
+    clientes.dni=dniNuevo;
+    return clientes;
+}
+
+function editEdad(clientes){
+    let edadNuevo=prompt("Introduce un nuevo nombre: ");
+    clientes.edad=edadNuevo;
+    return clientes;
+}
+
+function modificarCliente(){
+    if(confirm(`¿Desea modificar un cliente?`)){
+        let encontrado=encontrarClienteDNI();
+        if(encontrado!==-1){
+            let opcion=prompt("¿Que deseas modificar(nombre,apellidos,dni,edad?").toLocaleLowerCase(); 
+
+            switch(opcion){
+                case "nombre": 
+                    editNombre(encontrado);
+                    break;
+                case "apellidos":
+                    editApellidos(encontrado);
+                    break;
+                case "dni":
+                    editdni(encontrado);
+                    break;
+                case "edad":
+                    editEdad(encontrado);
+                    break;
+                default: 
+                    alert("Opción no válida");
+                    return;
+            }
+            alert(`Cliente modificado`);
+            mostrartodosClientes();
         }else{
-            alert(`No se ha encontrado al cliente con dni ${select}`);
+            alert("Cliente no encontrado");
         }
     }else{
-        alert("No se ha borrado el cliente");
+        alert("No se ha modificado ningún cliente");
     }
-
 }
