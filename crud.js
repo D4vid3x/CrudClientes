@@ -146,59 +146,30 @@ function borrarCliente(){
     alert("No se ha borrado ningún cliente");
    }
 }
-function editNombre(clientes){
-        let nombreNuevo=prompt("Introduce un nuevo nombre: ");
-        clientes.nombre=nombreNuevo;
-        return clientes;
+function editarCliente(cliente, valor){
+    let valorNuevo=prompt(`Introduce el nuevo ${valor}`);
+    cliente[valor]=valorNuevo;
+    return cliente;
 }
-
-function editApellidos(clientes){
-    let apellidoNuevo=prompt("Introduce unos nuevos apellidos: ");
-    clientes.apellidos=apellidoNuevo;
-    return clientes;
-}
-
-function editdni(clientes){
-    let dniNuevo=prompt("Introduce un nuevo dni: ");
-    clientes.dni=dniNuevo;
-    return clientes;
-}
-
-function editEdad(clientes){
-    let edadNuevo=prompt("Introduce un nuevo edad: ");
-    clientes.edad=edadNuevo;
-    return clientes;
-}
-
-function modificarCliente(){
-    if(confirm(`¿Desea modificar un cliente?`)){
-        let encontrado=encontrarClienteDNI();
-        if(encontrado!==-1){
-            let opcion=prompt("¿Que deseas modificar(nombre,apellidos,dni,edad?").toLocaleLowerCase(); 
-
-            switch(opcion){
-                case "nombre": 
-                    editNombre(encontrado);
-                    break;
-                case "apellidos":
-                    editApellidos(encontrado);
-                    break;
-                case "dni":
-                    editdni(encontrado);
-                    break;
-                case "edad":
-                    editEdad(encontrado);
-                    break;
-                default: 
-                    alert("Opción no válida");
-                    return;
+function modificarCliente() {
+    if (confirm("¿Desea modificar un cliente?")) {
+        let cliente = encontrarClienteDNI();
+        
+        if (cliente !== -1) {
+            let opcion = prompt("¿Qué deseas modificar (nombre, apellidos, dni, edad)?").toLowerCase();
+            let propiedadesValidas = ["nombre", "apellidos", "dni", "edad"];
+            
+            if (propiedadesValidas.includes(opcion)) {
+                editarCliente(cliente, opcion);
+                alert("Cliente modificado");
+                mostrartodosClientes();
+            } else {
+                alert("Opción no válida");
             }
-            alert(`Cliente modificado`);
-            mostrartodosClientes();
-        }else{
+        } else {
             alert("Cliente no encontrado");
         }
-    }else{
+    } else {
         alert("No se ha modificado ningún cliente");
     }
 }
