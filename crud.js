@@ -124,7 +124,17 @@ function limpiarTabla() {
 }
 
 function borrarCliente(){
-    let select=prompt("Indica el dni del usuario que quieres borrar: ");
-
+    let select=prompt("Indica el dni del cliente que quieres borrar: ");
+    if(confirm(`Quieres borrar el cliente con dni: ${select}?`)){
+        let encuentra=arrayClientes.findIndex(cliente=> cliente.dni===select);
+        if(encuentra !==-1){
+            arrayClientes.splice(encuentra, 1);
+            alert(`Cliente con dni ${select} borrado`);
+        }else{
+            alert(`No se ha encontrado al cliente con dni ${select}`);
+        }
+    }else{
+        alert("No se ha borrado el cliente");
+    }
     
 }
