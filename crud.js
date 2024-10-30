@@ -76,7 +76,7 @@ function crearCliente() {
         edad: edad
     };
 
-    if(nombre === "" || apellidos ==="" || dni==="" || edad===""){
+    if(nombre === "" || apellidos === "" || dni=== "" || edad=== ""){
         alert("Rellena los campos");
     }else{
         arrayClientes.push(clientes);
@@ -126,7 +126,6 @@ function encontrarClienteDNI(){
     let encuentra=arrayClientes.findIndex(cliente=> cliente.dni===busca);
 
     if(encuentra !==-1){
-        //return arrayClientes[encuentra];
         return encuentra;
     }else{
         alert(`No se ha encontrado al cliente con dni ${busca}`);
