@@ -114,7 +114,6 @@ function mostrartodosClientes() {
     }
     
 }
-
 function limpiarTabla() {
     let tabla = document.getElementById("tabla");
 
