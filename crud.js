@@ -126,9 +126,11 @@ function encontrarClienteDNI(){
     let encuentra=arrayClientes.findIndex(cliente=> cliente.dni===busca);
 
     if(encuentra !==-1){
-        return arrayClientes[encuentra];
+        //return arrayClientes[encuentra];
+        return encuentra;
     }else{
         alert(`No se ha encontrado al cliente con dni ${busca}`);
+        return -1;
     }
 }
 
@@ -139,18 +141,18 @@ function borrarCliente(){
         arrayClientes.splice(encontrado, 1);
         alert("Cliente borrado");
         mostrartodosClientes();
-    }else{
-        alert("Cliente no encontrado");
     }
    }else{
     alert("No se ha borrado ningún cliente");
    }
 }
+
 function editarCliente(cliente, valor){
     let valorNuevo=prompt(`Introduce el nuevo ${valor}`);
     cliente[valor]=valorNuevo;
     return cliente;
 }
+
 function modificarCliente() {
     if (confirm("¿Desea modificar un cliente?")) {
         let cliente = encontrarClienteDNI();
@@ -166,8 +168,6 @@ function modificarCliente() {
             } else {
                 alert("Opción no válida");
             }
-        } else {
-            alert("Cliente no encontrado");
         }
     } else {
         alert("No se ha modificado ningún cliente");
