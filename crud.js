@@ -156,11 +156,12 @@ function modificarCliente() {
         let cliente = encontrarClienteDNI();
         
         if (cliente !== -1) {
+            let clienteArray=arrayClientes[cliente];
             let opcion = prompt("¿Qué deseas modificar (nombre, apellidos, dni, edad)?").toLowerCase();
             let propiedadesValidas = ["nombre", "apellidos", "dni", "edad"];
             
             if (propiedadesValidas.includes(opcion)) {
-                editarCliente(cliente, opcion);
+                editarCliente(clienteArray, opcion);
                 alert("Cliente modificado");
                 mostrartodosClientes();
             } else {
